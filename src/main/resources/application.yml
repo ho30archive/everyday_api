@@ -1,0 +1,75 @@
+
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/everyday_back
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: macps9361
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      format_sql: true
+      user_sql_cooments: true
+      ddl-auto: update
+
+
+  profiles:
+    include: jwt
+
+
+
+  logging:
+    level:
+      org:
+        apache:
+          coyote:
+            http11: debug
+
+        hiberante:
+          SQL: debug
+
+      boardexample:
+        myboard: info
+
+
+
+
+file:
+  dir: /Users/hoyun/files/
+
+
+
+
+
+
+#?? ???? ?
+#spring:
+#datasource:
+#driver-class-name: org.mariadb.jdbc.Driver
+#url: jdbc:mariadb://localhost:3306/everyday_back
+#username: root
+#password: macps9361
+#
+#security:
+#jwt:
+#header: Authorization
+#secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+#token-validity-in-seconds: 86400
+#
+#jpa:
+#database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#generate-ddl: true
+#hibernate:
+#ddl-auto: update
+#show_sql: true
+#format_sql: true
+
+#    default_batch_fetch_size: 1000
+
+#logging.level:
+#org.hibernate.SQL: debug
+#org.hibernate.type: trace
+## parameter Binding
