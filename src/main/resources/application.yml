@@ -1,10 +1,10 @@
 
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/everyday_back
+    url: jdbc:mariadb://everyday-db.cg8p4zwso2f8.us-east-1.rds.amazonaws.com/everyday_back
     driver-class-name: org.mariadb.jdbc.Driver
-    username: root
-    password: macps9361
+    username: amdin
+    password: everydayps-1017
 
   jpa:
     open-in-view: false
