@@ -63,7 +63,7 @@ public class JwtServiceImpl implements JwtService{
     public String createAccessToken(String username) {
         return JWT.create()
                 .withSubject(ACCESS_TOKEN_SUBJECT)
-                .withExpiresAt(new Date(System.currentTimeMillis() + accessTokenValidityInSeconds * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + accessTokenValidityInSeconds * 86400)) // 하루로 정함
                 .withClaim(USERNAME_CLAIM, username)
                 .sign(Algorithm.HMAC512(secret));
     }
@@ -72,7 +72,7 @@ public class JwtServiceImpl implements JwtService{
     public String createRefreshToken() {
         return JWT.create()
                 .withSubject(REFRESH_TOKEN_SUBJECT)
-                .withExpiresAt(new Date(System.currentTimeMillis() + refreshTokenValidityInSeconds * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + refreshTokenValidityInSeconds * 2592000)) // 30일로 정함
                 .sign(Algorithm.HMAC512(secret));
     }
 
