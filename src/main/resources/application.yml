@@ -26,7 +26,8 @@ spring:
 
 
 file:
-  dir: /Users/hoyun/files/
+  dir: /files/
+# dir: /Users/hoyun/files/
 
 
 
