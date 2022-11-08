@@ -63,7 +63,7 @@ public class MissionController {
      */
     @GetMapping("/mission")
     public ResponseEntity search(Pageable pageable,
-                                 @RequestBody MissionSearchCondition missionSearchCondition){
+                                 @ModelAttribute MissionSearchCondition missionSearchCondition){
 
         return ResponseEntity.ok(missionService.getMissionList(pageable,missionSearchCondition));
     }
