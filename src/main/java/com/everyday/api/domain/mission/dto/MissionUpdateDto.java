@@ -5,6 +5,7 @@ import java.util.Optional;
 
 public record MissionUpdateDto(
         Optional<String> title,
-        Optional<String> content,
-        Optional<MultipartFile> uploadFile) {
+        Optional<String> content
+//        , Optional<MultipartFile> uploadFile
+) {
 }

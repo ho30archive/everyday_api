@@ -41,8 +41,8 @@ public class Mission extends BaseTimeEntity {
     @Column(nullable = false)
     private String content;
 
-    @Column(nullable = true)
-    private String filePath;
+//    @Column(nullable = true)
+//    private String filePath;
 
 
     @Builder
@@ -83,7 +83,7 @@ public class Mission extends BaseTimeEntity {
         this.content = content;
     }
 
-    public void updateFilePath(String filePath) {
-        this.filePath = filePath;
-    }
+//    public void updateFilePath(String filePath) {
+//        this.filePath = filePath;
+//    }
 }

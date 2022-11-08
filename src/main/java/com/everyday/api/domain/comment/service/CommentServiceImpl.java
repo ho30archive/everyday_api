@@ -48,9 +48,9 @@ public class CommentServiceImpl implements CommentService{
 
         comment.confirmMission(missionRepository.findById(postId).orElseThrow(() -> new MissionException(MissionExceptionType.MISSION_NOT_POUND)));
 
-        commentSaveDto.uploadFile().ifPresent(
-                file -> comment.updateFilePath(fileService.save(file))
-        );
+//        commentSaveDto.uploadFile().ifPresent(
+//                file -> comment.updateFilePath(fileService.save(file))
+//        );
 
 
         commentRepository.save(comment);
@@ -81,14 +81,14 @@ public class CommentServiceImpl implements CommentService{
             throw new CommentException(CommentExceptionType.NOT_AUTHORITY_UPDATE_COMMENT);
         }
 
-        if(comment.getFilePath() !=null){
-            fileService.delete(comment.getFilePath());//기존에 올린 파일 지우기
-        }
-
-        commentUpdateDto.uploadFile().ifPresentOrElse(
-                multipartFile ->  comment.updateFilePath(fileService.save(multipartFile)),
-                () ->  comment.updateFilePath(null)
-        );
+//        if(comment.getFilePath() !=null){
+//            fileService.delete(comment.getFilePath());//기존에 올린 파일 지우기
+//        }
+//
+//        commentUpdateDto.uploadFile().ifPresentOrElse(
+//                multipartFile ->  comment.updateFilePath(fileService.save(multipartFile)),
+//                () ->  comment.updateFilePath(null)
+//        );
 
         commentUpdateDto.content().ifPresent(comment::updateContent);
     }
@@ -104,9 +104,9 @@ public class CommentServiceImpl implements CommentService{
             throw new CommentException(CommentExceptionType.NOT_AUTHORITY_DELETE_COMMENT);
         }
 
-        if(comment.getFilePath() !=null){
-            fileService.delete(comment.getFilePath());//기존에 올린 파일 지우기
-        }
+//        if(comment.getFilePath() !=null){
+//            fileService.delete(comment.getFilePath());//기존에 올린 파일 지우기
+//        }
 
         comment.remove();
         List<Comment> removableCommentList = comment.findRemovableList();

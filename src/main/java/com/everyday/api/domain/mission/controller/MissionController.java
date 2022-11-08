@@ -24,7 +24,7 @@ public class MissionController {
      */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/mission")
-    public void save(@Valid @ModelAttribute MissionSaveDto missionSaveDto){
+    public void save(@Valid @RequestBody MissionSaveDto missionSaveDto){
         missionService.save(missionSaveDto);
     }
 
@@ -34,7 +34,7 @@ public class MissionController {
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/mission/{missionId}")
     public void update(@PathVariable("missionId") Long missionId,
-                       @ModelAttribute MissionUpdateDto missionUpdateDto){
+                       @RequestBody MissionUpdateDto missionUpdateDto){
 
 
         missionService.update(missionId, missionUpdateDto);
@@ -63,7 +63,7 @@ public class MissionController {
      */
     @GetMapping("/mission")
     public ResponseEntity search(Pageable pageable,
-                                 @ModelAttribute MissionSearchCondition missionSearchCondition){
+                                 @RequestBody MissionSearchCondition missionSearchCondition){
 
         return ResponseEntity.ok(missionService.getMissionList(pageable,missionSearchCondition));
     }

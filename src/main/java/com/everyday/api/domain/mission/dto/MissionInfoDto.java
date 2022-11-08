@@ -38,7 +38,7 @@ public class MissionInfoDto{
         this.missionId = mission.getId();
         this.title = mission.getTitle();
         this.content = mission.getContent();
-        this.filePath = mission.getFilePath();
+//        this.filePath = mission.getFilePath();
 
 
         this.writerDto = new MemberInfoDto(mission.getWriter());
