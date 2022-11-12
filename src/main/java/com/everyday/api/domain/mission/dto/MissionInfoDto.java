@@ -7,9 +7,7 @@ import com.everyday.api.domain.member.dto.MemberInfoDto;
 import com.everyday.api.domain.mission.Mission;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -25,10 +23,11 @@ public class MissionInfoDto{
     private String content;//내용
     private String filePath;//업로드 파일 경로
 
+    private String createdDate;
+    private Date endDate;
     private MemberInfoDto writerDto;//작성자에 대한 정보
-
-
     private List<CommentInfoDto> commentInfoDtoList;//댓글 정보들
+
 
 
 
@@ -38,7 +37,9 @@ public class MissionInfoDto{
         this.missionId = mission.getId();
         this.title = mission.getTitle();
         this.content = mission.getContent();
-//        this.filePath = mission.getFilePath();
+        this.filePath = mission.getFilePath();
+        this.createdDate = mission.getCreatedDate().toString().substring(0, 10);
+        this.endDate = mission.getEndDate();
 
 
         this.writerDto = new MemberInfoDto(mission.getWriter());

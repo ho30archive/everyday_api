@@ -11,8 +11,8 @@ public interface MissionRepository extends JpaRepository<Mission, Long> , Custom
 
     @EntityGraph(attributePaths = {"writer"})
     Optional<Mission> findWithWriterById(Long id);
-//
-//    @Override
-//    void delete(Mission entity);
+
+    @Override
+    void delete(Mission entity);
 }
 

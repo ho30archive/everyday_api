@@ -31,7 +31,7 @@ public class MissionServiceImpl implements MissionService{
 
     private final MissionRepository missionRepository;
     private final MemberRepository memberRepository;
-//    private final FileService fileService;
+    private final FileService fileService;
 
 
     /**
@@ -44,9 +44,9 @@ public class MissionServiceImpl implements MissionService{
         mission.confirmWriter(memberRepository.findByUsername(SecurityUtil.getLoginUsername())
                 .orElseThrow(() -> new MemberException(MemberExceptionType.NOT_FOUND_MEMBER)));
 
-//        missionSaveDto.uploadFile().ifPresent(
-//                file ->  mission.updateFilePath(fileService.save(file))
-//        );
+        missionSaveDto.uploadFile().ifPresent(
+                file ->  mission.updateFilePath(fileService.save(file))
+        );
         missionRepository.save(mission);
     }
 
@@ -65,14 +65,14 @@ public class MissionServiceImpl implements MissionService{
         missionUpdateDto.content().ifPresent(mission::updateContent);
 
 
-//        if(mission.getFilePath() !=null){
-//            fileService.delete(mission.getFilePath());//기존에 올린 파일 지우기
-//        }
-//
-//        missionUpdateDto.uploadFile().ifPresentOrElse(
-//                multipartFile ->  mission.updateFilePath(fileService.save(multipartFile)),
-//                () ->  mission.updateFilePath(null)
-//        );
+        if(mission.getFilePath() !=null){
+            fileService.delete(mission.getFilePath());//기존에 올린 파일 지우기
+        }
+
+        missionUpdateDto.uploadFile().ifPresentOrElse(
+                multipartFile ->  mission.updateFilePath(fileService.save(multipartFile)),
+                () ->  mission.updateFilePath(null)
+        );
 
     }
 
@@ -89,9 +89,9 @@ public class MissionServiceImpl implements MissionService{
         checkAuthority(mission,MissionExceptionType.NOT_AUTHORITY_DELETE_MISSION);
 
 
-//        if(mission.getFilePath() !=null){
-//            fileService.delete(mission.getFilePath());//기존에 올린 파일 지우기
-//        }
+        if(mission.getFilePath() !=null){
+            fileService.delete(mission.getFilePath());//기존에 올린 파일 지우기
+        }
 
         missionRepository.delete(mission);
     }

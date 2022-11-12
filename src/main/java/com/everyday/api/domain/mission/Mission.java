@@ -7,10 +7,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +43,18 @@ public class Mission extends BaseTimeEntity {
     @Column(nullable = false)
     private String content;
 
-//    @Column(nullable = true)
-//    private String filePath;
+    @Column(nullable = true)
+    private String filePath;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date endDate;
 
 
     @Builder
-    public Mission(String title, String content) {
+    public Mission(String title, String content, Date endDate) {
         this.title = title;
         this.content = content;
+        this.endDate = endDate;
     }
 
 
@@ -83,7 +89,7 @@ public class Mission extends BaseTimeEntity {
         this.content = content;
     }
 
-//    public void updateFilePath(String filePath) {
-//        this.filePath = filePath;
-//    }
+    public void updateFilePath(String filePath) {
+        this.filePath = filePath;
+    }
 }
