@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class CommentController {
@@ -16,7 +18,8 @@ public class CommentController {
 
     @PostMapping("/comment/{missionId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void commentSave(@PathVariable("missionId") Long missionId, CommentSaveDto commentSaveDto){
+    public void commentSave(@PathVariable("missionId") Long missionId,
+                            @Valid @RequestBody CommentSaveDto commentSaveDto){
         commentService.save(missionId, commentSaveDto);
     }
 
@@ -25,14 +28,14 @@ public class CommentController {
     @ResponseStatus(HttpStatus.CREATED)
     public void reCommentSave(@PathVariable("missionId") Long missionId,
                               @PathVariable("commentId") Long commentId,
-                              CommentSaveDto commentSaveDto){
+                              @Valid @RequestBody CommentSaveDto commentSaveDto){
         commentService.saveReComment(missionId, commentId, commentSaveDto);
     }
 
 
     @PutMapping("/comment/{commentId}")
     public void update(@PathVariable("commentId") Long commentId,
-                       CommentUpdateDto commentUpdateDto){
+                       @RequestBody CommentUpdateDto commentUpdateDto){
         commentService.update(commentId, commentUpdateDto);
     }
 
