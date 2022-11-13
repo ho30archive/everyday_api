@@ -5,8 +5,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
-public record CommentSaveDto (String content
-//                              ,Optional<MultipartFile> uploadFile
+public record CommentSaveDto (String content,
+                              Optional<MultipartFile> uploadFile
 ){
 
     public Comment toEntity() {

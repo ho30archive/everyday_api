@@ -46,8 +46,8 @@ public class Comment extends BaseTimeEntity {
 
     private boolean isRemoved= false;
 
-//    @Column(nullable = true)
-//    private String filePath;
+    @Column(nullable = true)
+    private String filePath;
 
 
     //== 부모 댓글을 삭제해도 자식 댓글은 남아있음 ==//
@@ -85,9 +85,9 @@ public class Comment extends BaseTimeEntity {
         this.content = content;
     }
 
-//    public void updateFilePath(String filePath) {
-//        this.filePath = filePath;
-//    }
+    public void updateFilePath(String filePath) {
+        this.filePath = filePath;
+    }
     //== 삭제 ==//
     public void remove() {
         this.isRemoved = true;
