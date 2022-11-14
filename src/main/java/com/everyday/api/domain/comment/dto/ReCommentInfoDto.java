@@ -18,6 +18,7 @@ public class ReCommentInfoDto  {
 
     private Long reCommentId;
     private String content;
+    private String createdDate;
     private boolean isRemoved;
 
 
@@ -28,6 +29,7 @@ public class ReCommentInfoDto  {
         this.parentId = reComment.getParent().getId();
         this.reCommentId = reComment.getId();
         this.content = reComment.getContent();
+        this.createdDate = reComment.getCreatedDate().toString().substring(0, 10);
 
         if(reComment.isRemoved()){
             this.content = DEFAULT_DELETE_MESSAGE;

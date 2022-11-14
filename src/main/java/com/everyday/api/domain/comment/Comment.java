@@ -74,6 +74,7 @@ public class Comment extends BaseTimeEntity {
     }
 
     public void addChild(Comment child){
+
         childList.add(child);
     }
 

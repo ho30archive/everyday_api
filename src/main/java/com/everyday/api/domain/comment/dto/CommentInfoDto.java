@@ -12,6 +12,8 @@ public class CommentInfoDto{
     private Long missionId;//댓글이 달린 Mission의 ID
     private Long commentId;//해당 댓글의 ID
     private String content;//내용 (삭제되었다면 "삭제된 댓글입니다 출력")
+
+    private String createdDate;
     private boolean isRemoved;//삭제되었는지?
     private String filePath;//업로드 파일 경로
     private MemberInfoDto writerDto;//댓글 작성자에 대한 정보
@@ -26,17 +28,13 @@ public class CommentInfoDto{
 
         this.missionId = comment.getMission().getId();
         this.commentId = comment.getId();
-
-
         this.content = comment.getContent();
+        this.createdDate = comment.getCreatedDate().toString().substring(0, 10);
 
         if(comment.isRemoved()){
             this.content = DEFAULT_DELETE_MESSAGE;
         }
-
         this.isRemoved = comment.isRemoved();
-
-
 
         this.writerDto = new MemberInfoDto(comment.getWriter());
 
